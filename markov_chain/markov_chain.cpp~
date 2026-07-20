@@ -1,0 +1,116 @@
+#include <iostream>
+#include <vector>
+#include <random>
+
+float random_sample(){
+  std::random_device rd;
+  std::mt19937 gen(rd());
+  std::uniform_real_distribution<float> dist(0.0, 1.0);
+  float r = dist(gen);
+  return r;
+}
+
+class State{
+public:
+  std::string name;
+  
+  State(const std::string& name)
+    : name(name){}
+};
+
+class MarkovChain{
+public:
+  std::vector<State> states;
+  std::vector<std::vector<float>> matrix;  
+
+  MarkovChain(){}
+
+  void add_state(const State& state);
+  void add_transition(const std::string& from, const std::string& to, float probability);
+  // State predict(State current, int iterations);
+};
+
+void MarkovChain::add_state(const State& state){
+  states.push_back(state);
+
+  // add new column to the matrix
+  for(auto& row : matrix){
+    row.push_back(0.0f);
+  }
+  // add new row to the matrix
+  matrix.push_back(std::vector<float>(states.size(), 0.0f));
+}
+
+void MarkovChain::add_transition(const std::string& from, const std::string& to, float probability){
+  int row;
+  int column;
+  
+  // get 'from' index
+  for(int i = 0; i < states.size(); i++){
+    if (states[i].name == from){
+      row = i;
+    }
+  }
+  // get 'to' index
+  for(int i = 0; i < states.size(); i++){
+    if (states[i].name == to){
+      column = i;
+    }
+  }
+
+  matrix[row][column] = probability;
+  
+}
+
+
+// State MarkovChain::predict(State current, int iterations){
+  
+//   for (int i = 0; i < iterations; i++){    
+    
+//     // sample the probs
+//     float r = random_sample();
+//     std::cout << r << "\n";
+      
+//     // make cumlitve probs
+//     float cumulative = 0.0;
+//     for (int j = 0; j < probs.size(); j++){
+//       cumulative += probs[j];
+      
+//       // predict the next state
+//       if (r <= cumulative){
+// 	std::cout << "Next state: " << states[j].name << "\n";
+// 	initial = states[j];
+//       }
+//     }
+//     return states[j];
+//   }
+//   return current;
+// }
+
+// Main
+int main(){
+
+  // create markov chain
+  MarkovChain chain;
+
+  // create states
+  State sunny("Sunny");
+  State cloudy("Cloudy");
+
+  // add states to chain
+  chain.add_state(sunny);
+  chain.add_state(cloudy);
+
+  // define transition probs
+  chain.add_transition("sunny", "sunny", 0.8);
+  chain.add_transition("sunny", "cloudy", 0.2);
+
+  
+  
+  // print trans matrix
+
+  // predict prob in 
+  
+  return 0;
+}
+
