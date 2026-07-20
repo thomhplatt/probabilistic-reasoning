@@ -1,1 +1,1 @@
-# probabilistic-reasoning-markov-chain
+# probabilistic-reasoning
