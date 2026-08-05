@@ -273,12 +273,16 @@ int main(){
   
   // display information
   std::cout << " \n ==== MARKOV CHAIN ==== \n\n";
- 
-  std::cout << "States:\n"
-	    << "0. Sunny\n"
-	    << "1. Cloudy\n" 
-	    << "2. Rainy\n";
 
+  std::cout << "States:\n";
+  
+  for (int i = 0; i < weather.states.size(); i++){
+    std::cout << i
+	      << ". "
+	      << weather.states[i].name
+	      << "\n";
+  }
+ 
   // user defines chain
   int state_index;
   int steps;

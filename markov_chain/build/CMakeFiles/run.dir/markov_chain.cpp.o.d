@@ -1,5 +1,5 @@
 CMakeFiles/run.dir/markov_chain.cpp.o: \
-  /Users/thomhplatt/Developer/code/cpp/probablistic_reasoning/markov_chain/markov_chain.cpp \
+  /Users/thomhplatt/Developer/code/cpp/probabilistic_reasoning/markov_chain/markov_chain.cpp \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/iostream \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__assert \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__assertion_handler \
